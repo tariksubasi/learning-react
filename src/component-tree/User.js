@@ -16,15 +16,9 @@ const User = () => {
     actionEvent: onClick,
   };
 
-  return (
-    <Card
-      imageURL={cardProps.imageURL}
-      title={cardProps.title}
-      description={cardProps.description}
-      actionName={cardProps.actionName}
-      actionEvent={cardProps.actionEvent}
-    />
-  );
+  //const { imageURL, title, description, actionName, actionEvent } = cardProps;
+
+  return <Card {...cardProps} />;
 };
 
 export default User;
