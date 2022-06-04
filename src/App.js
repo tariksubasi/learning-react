@@ -7,11 +7,21 @@ import User from "./component-tree/User";
 function App() {
   return (
     <div className="App">
-      <Profile>
-        <User />
-      </Profile>
-      <Main />
-      <Search />
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <Profile>
+              <User />
+            </Profile>
+          </div>
+          <div className="col">
+            <Main />
+          </div>
+          <div className="col">
+            <Search />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

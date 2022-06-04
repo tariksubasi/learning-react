@@ -2,7 +2,7 @@ import React from "react";
 
 const Profile = ({ children }) => {
   return (
-    <div>
+    <div className="border ">
       Profile
       {children}
     </div>
