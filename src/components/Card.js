@@ -2,7 +2,7 @@ import React from "react";
 
 const Card = ({ imageURL, title, description, actionName, actionEvent }) => {
   return (
-    <div className="card" style={{ maxWidth: "250px" }}>
+    <div className="card mt-2" style={{ maxWidth: "250px" }}>
       <img
         style={{
           width: "100px",
