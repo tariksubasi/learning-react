@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Card from "../components/Card";
+import { getRandomColor } from "../utils/utility";
+import { AppStateContext } from "../App";
 
 const User = () => {
   const onClick = () => {
@@ -25,6 +27,14 @@ const User = () => {
   };
 
   console.log("user rendered");
+
+  const { setBackground } = useContext(AppStateContext);
+
+  const onChangeBackground = () => {
+    const randomColor = getRandomColor();
+    setBackground(randomColor);
+  };
+
   return (
     <>
       {header && (
@@ -41,6 +51,9 @@ const User = () => {
         onChange={onChange}
       />
       <Card {...cardProps} />
+      <button className="mt-2 btn btn-primary" onClick={onChangeBackground}>
+        Set Random Background Color
+      </button>
     </>
   );
 };
