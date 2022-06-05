@@ -1,10 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "../components/Card";
 
 const User = () => {
-
-  console.log("user rendered");
-
   const onClick = () => {
     alert("Go Details");
   };
@@ -21,7 +18,31 @@ const User = () => {
 
   //const { imageURL, title, description, actionName, actionEvent } = cardProps;
 
-  return <Card {...cardProps} />;
+  const [header, setHeader] = useState("");
+
+  const onChange = (e) => {
+    setHeader(e.target.value);
+  };
+
+  console.log("user rendered");
+  return (
+    <>
+      {header && (
+        <p style={{ minWidth: "100px", minHeight: "20px" }} className="border">
+          {header}
+        </p>
+      )}
+      <input
+        className="form-control"
+        style={{
+          maxWidth: "250px",
+        }}
+        type="text"
+        onChange={onChange}
+      />
+      <Card {...cardProps} />
+    </>
+  );
 };
 
 export default User;

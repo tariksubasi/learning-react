@@ -24,7 +24,9 @@ function App() {
         >
           {appName}
         </h2>
-        <input type="text" onChange={onChange} />
+        <input style={{
+        maxWidth: "250px"
+      }} className="form-control" type="text" onChange={onChange} />
       </div>
 
       <div
