@@ -27,12 +27,9 @@ const Search = () => {
       actionName: "Product-3",
     },
   ];
-
+  console.log("search rendered");
   return (
-    <div
-    
-      className=" d-flex justify-content-center align-items-center flex-column"
-    >
+    <div className=" d-flex justify-content-center align-items-center flex-column">
       <h3> Search</h3>
       {products.map((product) => {
         return (

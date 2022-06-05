@@ -12,6 +12,8 @@ function App() {
     setAppName(e.target.value);
   };
 
+  console.log("app rendered");
+
   return (
     <div className="App mt-5">
       <div className="d-flex justify-content-center align-items-center flex-column">

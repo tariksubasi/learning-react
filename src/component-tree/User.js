@@ -2,6 +2,9 @@ import React from "react";
 import Card from "../components/Card";
 
 const User = () => {
+
+  console.log("user rendered");
+
   const onClick = () => {
     alert("Go Details");
   };
