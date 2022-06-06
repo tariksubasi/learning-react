@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useMainBackground from "./useMainBackground";
 import useUserInfo from "./useUserInfo";
 
@@ -6,6 +6,10 @@ const Main = () => {
   const { onChangeBackground } = useMainBackground();
 
   const { onUserChange, onPassChange, userInfo } = useUserInfo();
+
+  useEffect(() => {
+    console.log("useEfffect...")
+  });
 
   return (
     <div className=" d-flex justify-content-center align-items-center flex-column">
