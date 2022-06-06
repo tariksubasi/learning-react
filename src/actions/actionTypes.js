@@ -1,0 +1,1 @@
+export const SET_APP_BACKGROUND = "SET_APP_BACKGROUND";

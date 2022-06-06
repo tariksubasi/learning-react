@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppStateContext } from "../App";
 
-const Controller = ({ background, appName, onChange }) => {
+const Controller = () => {
+  const { state, dispatch } = useContext(AppStateContext);
+  const { controllerBackground, appName } = state;
+
   return (
     <div
       style={{
         width: "300px",
         margin: "auto",
-        backgroundColor: background,
+        backgroundColor: controllerBackground,
       }}
       className="p-2 border shadow-sm d-flex justify-content-center align-items-center flex-column"
     >
@@ -23,7 +27,7 @@ const Controller = ({ background, appName, onChange }) => {
         }}
         className="form-control"
         type="text"
-        onChange={onChange}
+        //onChange={onChange}
       />
     </div>
   );

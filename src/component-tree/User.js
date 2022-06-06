@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import Card from "../components/Card";
 import { getRandomColor } from "../utils/utility";
 import { AppStateContext } from "../App";
+import { setAppBackground } from "../actions/actions";
 
 const User = () => {
   const onClick = () => {
@@ -28,11 +29,11 @@ const User = () => {
 
   console.log("user rendered");
 
-  const { setBackground } = useContext(AppStateContext);
+  const { state, dispatch } = useContext(AppStateContext);
 
   const onChangeBackground = () => {
     const randomColor = getRandomColor();
-    setBackground(randomColor);
+    dispatch(setAppBackground(randomColor));
   };
 
   return (

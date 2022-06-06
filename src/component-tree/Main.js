@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
+import { setAppBackground } from "../actions/actions";
 import { AppStateContext } from "../App";
 import { getRandomColor } from "../utils/utility";
 
 const Main = () => {
-  const { setBackground } = useContext(AppStateContext);
+  const { state, dispatch } = useContext(AppStateContext);
 
   const onChangeBackground = () => {
     const randomColor = getRandomColor();
-    setBackground(randomColor);
+    dispatch(setAppBackground(randomColor));
   };
 
   const [userInfo, setUserInfo] = useState({

@@ -1,18 +1,18 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useReducer } from "react";
 import Main from "./component-tree/Main";
 import Profile from "./component-tree/Profile";
 import Search from "./component-tree/Search";
 import Controller from "./components/Controller";
+import reducer, { initialState } from "./reducer/reducer";
 import "./App.css";
 
 export const AppStateContext = createContext();
 
 function App() {
-  const [appName, setAppName] = useState("default");
-  const [background, setBackground] = useState("#ffffff");
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const onChange = (e) => {
-    setAppName(e.target.value);
+    //setAppName(e.target.value);
   };
 
   console.log("app rendered");
@@ -21,14 +21,11 @@ function App() {
     <div className="App mt-5">
       <AppStateContext.Provider
         value={{
-          setBackground,
+          state,
+          dispatch,
         }}
       >
-        <Controller
-          background={background}
-          appName={appName}
-          onChange={onChange}
-        />
+        <Controller />
 
         <div
           className="container mt-2 border p-4 shadow-sm"
