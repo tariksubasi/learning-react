@@ -8,8 +8,12 @@ const Main = () => {
   const { onUserChange, onPassChange, userInfo } = useUserInfo();
 
   useEffect(() => {
-    console.log("useEfffect...")
+    console.log("useEffect will run every render...")
   });
+
+  useEffect(() => {
+    console.log("useEffect will only run in first render.")
+  },[]);
 
   return (
     <div className=" d-flex justify-content-center align-items-center flex-column">
