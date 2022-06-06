@@ -1,31 +1,28 @@
 import React, { useEffect, useRef } from "react";
+import { addRandomProduct } from "../actions/actions";
+import { products } from "../utils/utility";
 import useMainBackground from "./useMainBackground";
+import useUserFocus from "./useUserFocus";
 import useUserInfo from "./useUserInfo";
 
 const Main = () => {
-  const { onChangeBackground } = useMainBackground();
+  const { onChangeBackground, dispatch } = useMainBackground();
 
   const { onUserChange, onPassChange, userInfo } = useUserInfo();
 
-  useEffect(() => {
-    console.log("useEffect will run every render...");
-  });
+  const { userRef } = useUserFocus();
+
+  const render = useRef(false);
 
   useEffect(() => {
-    console.log("useEffect will only run in first render.");
-
-    userRef.current.focus();
-  }, []);
-
-  let count = 0;
-  count++;
-  console.log("count", count);
-
-  const counter = useRef(0);
-  counter.current++;
-  console.log("counter", counter);
-
-  const userRef = useRef();
+    if (render.current) {
+      const randomIndex = Math.ceil(Math.random() * 2);
+      const randomProduct = products[randomIndex];
+      dispatch(addRandomProduct(randomProduct));
+    } else {
+      render.current = true;
+    }
+  }, [userInfo.name]);
 
   return (
     <div className=" d-flex justify-content-center align-items-center flex-column">

@@ -9,7 +9,7 @@ const useMainBackground = () => {
     const randomColor = getRandomColor();
     dispatch(setAppBackground(randomColor));
   };
-  return { onChangeBackground };
+  return { onChangeBackground,dispatch };
 };
 
 export default useMainBackground;
