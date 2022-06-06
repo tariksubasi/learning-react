@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { addRandomProduct } from "../actions/actions";
+import usePassFirstMount from "../shared-hooks/usePassFirstMount";
 import { products } from "../utils/utility";
 import useMainBackground from "./useMainBackground";
 import useUserFocus from "./useUserFocus";
@@ -12,17 +13,13 @@ const Main = () => {
 
   const { userRef } = useUserFocus();
 
-  const render = useRef(false);
+  const addProduct = () => {
+    const randomIndex = Math.ceil(Math.random() * 2);
+    const randomProduct = products[randomIndex];
+    dispatch(addRandomProduct(randomProduct));
+  };
 
-  useEffect(() => {
-    if (render.current) {
-      const randomIndex = Math.ceil(Math.random() * 2);
-      const randomProduct = products[randomIndex];
-      dispatch(addRandomProduct(randomProduct));
-    } else {
-      render.current = true;
-    }
-  }, [userInfo.name]);
+  usePassFirstMount(addProduct, [userInfo.name]);
 
   return (
     <div className=" d-flex justify-content-center align-items-center flex-column">
