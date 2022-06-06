@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import useMainBackground from "./useMainBackground";
 import useUserInfo from "./useUserInfo";
 
@@ -8,12 +8,24 @@ const Main = () => {
   const { onUserChange, onPassChange, userInfo } = useUserInfo();
 
   useEffect(() => {
-    console.log("useEffect will run every render...")
+    console.log("useEffect will run every render...");
   });
 
   useEffect(() => {
-    console.log("useEffect will only run in first render.")
-  },[]);
+    console.log("useEffect will only run in first render.");
+
+    userRef.current.focus();
+  }, []);
+
+  let count = 0;
+  count++;
+  console.log("count", count);
+
+  const counter = useRef(0);
+  counter.current++;
+  console.log("counter", counter);
+
+  const userRef = useRef();
 
   return (
     <div className=" d-flex justify-content-center align-items-center flex-column">
@@ -23,6 +35,7 @@ const Main = () => {
       </button>
       <label className="mt-2">UserName</label>
       <input
+        ref={userRef}
         onChange={onUserChange}
         value={userInfo.name}
         type="text"
