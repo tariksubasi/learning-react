@@ -5,3 +5,8 @@ export const setAppBackground = (state, action) => {
     draftState.controllerBackground = action.payload;
   });
 };
+export const addRandomProduct = (state, action) => {
+  return produce(state, (draftState) => {
+    draftState.products.push(action.payload);
+  });
+};

@@ -6,3 +6,9 @@ export const setAppBackground = (bgColor) => {
     payload: bgColor,
   };
 };
+export const addRandomProduct = (productObject) => {
+  return {
+    type: actionTypes.ADD_RANDOM_PRODUCT,
+    payload: productObject,
+  };
+};

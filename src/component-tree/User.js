@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
 import Card from "../components/Card";
-import { getRandomColor } from "../utils/utility";
+import { getRandomColor, products } from "../utils/utility";
 import { AppStateContext } from "../App";
-import { setAppBackground } from "../actions/actions";
+import { setAppBackground, addRandomProduct } from "../actions/actions";
 
 const User = () => {
   const onClick = () => {
@@ -36,6 +36,12 @@ const User = () => {
     dispatch(setAppBackground(randomColor));
   };
 
+  const onAddRandomProduct = () => {
+    const randomIndex = Math.ceil(Math.random() * 2);
+    const randomProduct = products[randomIndex];
+    dispatch(addRandomProduct(randomProduct));
+  };
+
   return (
     <>
       {header && (
@@ -54,6 +60,9 @@ const User = () => {
       <Card {...cardProps} />
       <button className="mt-2 btn btn-primary" onClick={onChangeBackground}>
         Set Random Background Color
+      </button>
+      <button className="mt-2 btn btn-success" onClick={onAddRandomProduct}>
+        Add Random Product
       </button>
     </>
   );
