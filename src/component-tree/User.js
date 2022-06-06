@@ -1,10 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import Card from "../components/Card";
 import { getRandomColor, products } from "../utils/utility";
-import { AppStateContext } from "../App";
 import { setAppBackground, addRandomProduct } from "../actions/actions";
+import useGetAppContext from "../shared-hooks/useGetAppContext";
 
 const User = () => {
+  const { state, dispatch } = useGetAppContext();
+
   const onClick = () => {
     alert("Go Details");
   };
@@ -28,8 +30,6 @@ const User = () => {
   };
 
   console.log("user rendered");
-
-  const { state, dispatch } = useContext(AppStateContext);
 
   const onChangeBackground = () => {
     const randomColor = getRandomColor();
