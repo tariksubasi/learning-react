@@ -4,8 +4,7 @@ import Card from "../components/Card";
 
 const Search = () => {
   const { state } = useContext(AppStateContext);
-  const { products } = state;
-  console.log("search rendered");
+  const { products } = state; 
   return (
     <div className=" d-flex justify-content-center align-items-center flex-column">
       <h3> Search</h3>

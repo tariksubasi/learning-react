@@ -1,15 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Card from "../components/Card";
-import { getRandomColor, products } from "../utils/utility";
-import { setAppBackground, addRandomProduct } from "../actions/actions";
-import useGetAppContext from "../shared-hooks/useGetAppContext";
+import useHeader from "./useHeader";
+import useUserEvents from "./useUserEvents";
 
 const User = () => {
-  const { state, dispatch } = useGetAppContext();
-
-  const onClick = () => {
-    alert("Go Details");
-  };
+  const { header, onChange } = useHeader();
+  const { onChangeBackground, onAddRandomProduct, onClick } = useUserEvents();
 
   const cardProps = {
     imageURL:
@@ -20,28 +16,6 @@ const User = () => {
     actionName: "Go Details",
     actionEvent: onClick,
   };
-
-  //const { imageURL, title, description, actionName, actionEvent } = cardProps;
-
-  const [header, setHeader] = useState("");
-
-  const onChange = (e) => {
-    setHeader(e.target.value);
-  };
-
-  console.log("user rendered");
-
-  const onChangeBackground = () => {
-    const randomColor = getRandomColor();
-    dispatch(setAppBackground(randomColor));
-  };
-
-  const onAddRandomProduct = () => {
-    const randomIndex = Math.ceil(Math.random() * 2);
-    const randomProduct = products[randomIndex];
-    dispatch(addRandomProduct(randomProduct));
-  };
-
   return (
     <>
       {header && (

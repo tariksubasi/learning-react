@@ -1,32 +1,11 @@
-import React, { useState } from "react";
-import { setAppBackground } from "../actions/actions";
-import useGetAppContext from "../shared-hooks/useGetAppContext";
-import { getRandomColor } from "../utils/utility";
+import React from "react";
+import useMainBackground from "./useMainBackground";
+import useUserInfo from "./useUserInfo";
 
 const Main = () => {
-  const { state, dispatch } = useGetAppContext();
+  const { onChangeBackground } = useMainBackground();
 
-  const onChangeBackground = () => {
-    const randomColor = getRandomColor();
-    dispatch(setAppBackground(randomColor));
-  };
-
-  const [userInfo, setUserInfo] = useState({
-    name: "",
-    password: "",
-  });
-
-  const onUserChange = (e) => {
-    setUserInfo((state) => {
-      return { ...state, name: e.target.value };
-    });
-  };
-
-  const onPassChange = (e) => {
-    setUserInfo((state) => {
-      return { ...state, password: e.target.value };
-    });
-  };
+  const { onUserChange, onPassChange, userInfo } = useUserInfo();
 
   return (
     <div className=" d-flex justify-content-center align-items-center flex-column">
